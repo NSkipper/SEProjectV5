@@ -17,12 +17,12 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
-  template: '<App v-bind:tools="toolsJSON" v-bind:machines="machineJSON" v-bind:parts="partsJSON"/>',
+  template: '<App v-bind:tools="toolsJSON" v-bind:machines="machineJSON" v-bind:components="componentsJSON"/>',
   components: { App },
   data:{
     machineJSON: [],
     toolsJSON: [],
-    partsJSON: []
+    componentsJSON: []
   },
   methods: {
     fetchData: function () {
@@ -49,7 +49,7 @@ new Vue({
       //json3 for partJSON
       axios.get(jsonURL3)
         .then(function (response) {
-          self.partsJSON = response.data;
+          self.componentsJSON = response.data;
         })
         .catch(function (error) {
           console.log(error);

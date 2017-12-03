@@ -13,26 +13,6 @@ export default new Router({
       path: '/',
       name: 'Overview',
       component: Overview
-    },
-    {
-      path: '/AddItem',
-      name: 'AddItem',
-      component: AddItem
-    },
-    {
-      path: '/AddMachine',
-      name: 'AddMachine',
-      component: AddMachine
-    },
-    {
-      path: '/AddTool',
-      name: 'AddTool',
-      component: AddTool
-    },
-    {
-      path: '/AddComponent',
-      name: 'AddComponent',
-      component: AddComponent
-    },
+    }
   ]
 })

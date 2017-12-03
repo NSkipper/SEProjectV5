@@ -1,27 +1,28 @@
 <template>
     <div class='container-fluid'>
-        <div class='col-sm-6'>
-            <vue-tabs>
-                <v-tab title="Tools table">
-                    <br/>
-                    <tool-table v-bind:machines='machines' v-bind:tools='tools' v-on:handle-row='handleRowFunction'></tool-table>
-                </v-tab>
-
-                <v-tab title="Add Items">
-                    <add-item></add-item>
-                </v-tab>
-            </vue-tabs>
+        <div v-bind:class='mainToolTableClasses'>
+            <div class='container-fluid'>
+                <vue-tabs>
+                    <v-tab title="Tools table">
+                        <br/>
+                        <tool-table v-bind:machines='machines' v-bind:tools='tools' v-on:handle-row='handleRowFunction'></tool-table>
+                    </v-tab>
+                    <v-tab  title="Add Items">
+                        <add-item></add-item>
+                    </v-tab>
+                </vue-tabs>
+            </div>    
         </div>
-        <div class='col-sm-6'>
+        <div v-if='displayDetailPage' class='col-sm-6 container-fluid'>
             <vue-tabs>
                 <v-tab title="Tool Details">
                     <br/>
-                    <tool-detail v-bind:rowTool='rowFromTool'></tool-detail>
+                    <tool-detail v-bind:rowTool='rowFromTools'></tool-detail>
                 </v-tab>
 
                 <v-tab title="Components">
                     <br/>
-                    <p>Put components detail here</p>
+                    <component-detail v-bind:tool='rowFromTools' v-bind:components='components'></component-detail>
                 </v-tab>
             </vue-tabs>
         </div>  
@@ -31,23 +32,35 @@
 import ToolTable from "./ToolTable";
 import AddItem from './AddItem'
 import ToolDetail from './ToolDetail'
+import ComponentDetail from './detailedComponent'
 export default {
-  props: ["tools", "machines", "parts"],
-  components: {
-    ToolTable,
-    AddItem,
-    ToolDetail
-  },
-  data() {
+    props: ["tools", "machines", "components"],
+    components: {
+        ToolTable,
+        AddItem,
+        ToolDetail,
+        ComponentDetail
+    },
+    data() {
         return {
-            rowFromTool:[]
+            rowFromTools: [],
+            mainToolTableClasses:'col-sm-12',
+            displayDetailPage:false
         };
     },
-  methods: {
-    handleRowFunction(row) {
-        this.rowFromTool = row;
+    methods: {
+        handleRowFunction(row) {
+            this.rowFromTools = row;
+            this.mainToolTableClasses='col-sm-6';
+            this.displayDetailPage=true;
+        }
     }
-}
 };
 </script>
+<style>
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+</style>
 

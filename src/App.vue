@@ -1,6 +1,6 @@
 <template>
    <div id="app">
-      <router-view v-bind:tools="tools" v-bind:machines="machines" v-bind:parts="parts"/>
+      <router-view v-bind:tools="tools" v-bind:machines="machines" v-bind:components="components"/>
    </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
     name: 'app',
 
-    props: ['tools', 'machines', 'parts']
+    props: ['tools', 'machines', 'components']
 }
 </script>
 

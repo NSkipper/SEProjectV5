@@ -64,9 +64,15 @@ export default {
                     name: "MachineSerial",
                     visible: true,
                     editable: false
+                },
+                {
+                    title: "Attached Components",
+                    name: "PartIds",
+                    visible: true,
+                    editable: false
                 }
             ];
-            var keyList = ["Name", "Type", "StationNumber", "MachineSerial"];
+            var keyList = ['Name', 'Type', 'StationNumber', 'MachineSerial','PartIds'];
             entry = this.tools[0];
             for (name in entry) {
                 if (keyList.indexOf(name) == -1) {
