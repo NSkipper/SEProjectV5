@@ -1,7 +1,5 @@
 <template>
-   <div>
-      <div class='col-sm-6'>
-         
+   <div class='container-fluid'>
          <div class="form-group">
             <label for='toolTable'>Select all tools from</label>
             <select id='toolTable' class='form-control' v-model='selectedMachine'>
@@ -11,40 +9,18 @@
          </select>
          </div>
          
-
         <div>
           <vue-bootstrap-table
               :columns="getToolKeys()"
               :values="filterToolByMachine"
               :show-filter="true"
               :show-column-picker="true"
-              :sortable="true"
+              ::multi-column-sortable="true"
               :multi-column-sortable="true"
+              :row-click-handler="handleRowFunction"
               :filter-case-sensitive="false">
           </vue-bootstrap-table>
         </div>
-
-
-        <v-app id="inspire">
-    <v-layout row justify-center>
-      <v-dialog v-model="dialog" scrollable max-width="300px">
-        <v-btn color="primary" dark slot="activator">Open Dialog</v-btn>
-        <v-card>
-          <v-card-title>Select Column</v-card-title>
-          <v-divider></v-divider>
-<v-checkbox label="John" v-model="ex5" value="John"></v-checkbox>
-              <v-checkbox label="Jacob" v-model="ex5" value="Jacob"></v-checkbox>
-          <v-divider></v-divider>
-          <v-card-actions>
-            <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-layout>
-  </v-app>
-      </div>
-
 
    </div>
 </template>
@@ -56,9 +32,6 @@ export default {
     data() {
         return {
             selectedMachine: 'all',
-            dialog: false,
-            ex5: ['John'],
-            ex6: ['John'],
         };
     },
     components: {
@@ -107,6 +80,10 @@ export default {
                 }
             }
             return columns;
+        },
+        handleRowFunction(event, entry){
+            let handler = entry;
+            this.$emit('handle-row',handler);
         },
         toolPassesMachineFilter() {
             var selectedMachineSerial = '';

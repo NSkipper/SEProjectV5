@@ -15,12 +15,10 @@
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.4",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
     "vue": "^2.5.2",
+    "vue-nav-tabs": "^0.5.5",
     "vue-router": "^3.0.1",
-    "vue2-bootstrap-table2": "^1.1.8",
-    "vuetify": "^0.17.3"
+    "vue2-bootstrap-table2": "^1.1.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

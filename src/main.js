@@ -4,13 +4,12 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import axios from 'axios';
-import Vuetify from 'vuetify'
-Vue.use(Vuetify)
 
+import VueTabs from 'vue-nav-tabs'
+import 'vue-nav-tabs/themes/vue-tabs.css'
+Vue.use(VueTabs)
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import'vuetify/dist/vuetify.min.css'
-import 'vuetify/src/stylus/main.styl'
 import 'lodash/lodash.min.js'
 Vue.config.productionTip = false;
 
@@ -23,7 +22,7 @@ new Vue({
   data:{
     machineJSON: [],
     toolsJSON: [],
-    partsJSON: [],
+    partsJSON: []
   },
   methods: {
     fetchData: function () {

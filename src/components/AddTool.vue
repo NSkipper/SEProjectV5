@@ -1,9 +1,7 @@
 <template>
    <div class="container-fluid">
-      
-         <div class='col-sm-10'>
-            <div id="addtool" class="tabAddItem">
-               <form action="#" class="form-horizontal">
+         <div class='col-sm-12'>
+            <form action="#" class="form-horizontal">
                   <div class="form-group">
                      <label class="control-label col-sm-2" for="tName">Tool Name:</label>
                      <div class="col-sm-4">
@@ -41,15 +39,10 @@
                      </div>
                   </div>
                </form>
-            </div>
          </div>
       </div>
    </div>
 </template>
-
-
-
-
 
 <script>
     export default {

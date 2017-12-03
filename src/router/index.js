@@ -4,6 +4,7 @@ import Overview from '@/components/Overview'
 import AddItem from '@/components/AddItem'
 import AddMachine from '@/components/AddMachine'
 import AddTool from '@/components/AddTool'
+import AddComponent from '@/components/AddComponent'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +28,11 @@ export default new Router({
       path: '/AddTool',
       name: 'AddTool',
       component: AddTool
-    }
+    },
+    {
+      path: '/AddComponent',
+      name: 'AddComponent',
+      component: AddComponent
+    },
   ]
 })

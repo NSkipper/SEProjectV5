@@ -1,25 +1,33 @@
 <template>
-    <div class="container-fluid">
-        <div class='col-sm-12'>
-            <ul class="nav nav-tabs">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="#/AddItem">Add Item</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-2">
-            <div class="btn-group-vertical" >
-                <a href="#/AddMachine"><button class="tabAddItemlinks btn btn-basic">Add Machine</button></a>
-                        
-                <button class="tabAddItemlinks btn btn-basic">Add Tool</button>
-                        
-                <button class="tabAddItemlinks btn btn-basic">Add Part</button>
-            </div>
-        </div>
+    <div>
+        <vue-tabs>
+            <v-tab title="Add Machine">
+                <br/>
+                <add-machine></add-machine>
+            </v-tab>
+
+            <v-tab title="Add Tool">
+                <br/>
+                <add-tool></add-tool>
+            </v-tab>
+
+            <v-tab title="Add Component">
+                 <br/>
+                <add-component></add-component>
+            </v-tab>
+        </vue-tabs>
     </div>
 </template>
 
 <script>
+    import AddMachine from './AddMachine'
+    import AddTool from './AddTool'
+    import AddComponent from './AddComponent'
     export default {
-
+        components: {
+            AddMachine,
+            AddTool,
+            AddComponent
+        }
     }
 </script>
