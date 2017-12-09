@@ -19,6 +19,9 @@
                 </tbody>     
             </table> 
         </div>
+        <div class="btn-group">
+            <button type="button" class="btn ">Add Components</button>
+        </div> 
     </div>    
 </template>
 

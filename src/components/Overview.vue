@@ -1,33 +1,34 @@
 <template>
-    <div class='container-fluid'>
-        <div v-bind:class='mainToolTableClasses'>
-            <div class='container-fluid'>
-                <vue-tabs>
-                    <v-tab title="Tools table">
-                        <br/>
-                        <tool-table v-bind:machines='machines' v-bind:tools='tools' v-on:handle-row='handleRowFunction'></tool-table>
-                    </v-tab>
-                    <v-tab  title="Add Items">
-                        <add-item></add-item>
-                    </v-tab>
-                </vue-tabs>
-            </div>    
-        </div>
-        <div v-if='displayDetailPage' class='col-sm-6 container-fluid'>
+   <div class='container-fluid'>
+      <div v-bind:class='mainToolTableClasses'>
+         <div class='container-fluid'>
             <vue-tabs>
-                <v-tab title="Tool Details">
-                    <br/>
-                    <tool-detail v-bind:rowTool='rowFromTools'></tool-detail>
-                </v-tab>
-
-                <v-tab title="Components">
-                    <br/>
-                    <component-detail v-bind:tool='rowFromTools' v-bind:components='components'></component-detail>
-                </v-tab>
+               <v-tab title="Tools table">
+                  <br/>
+                  <tool-table v-bind:machines='machines' v-bind:tools='tools' v-on:handle-row='handleRowFunction'></tool-table>
+               </v-tab>
+               <v-tab  title="Add Items">
+                  <add-item></add-item>
+               </v-tab>
             </vue-tabs>
-        </div>  
-    </div>
+         </div>
+      </div>
+      <div v-if='displayDetailPage' class='col-sm-6 container-fluid'>
+         <vue-tabs>
+            <v-tab title="Tool Details">
+               <br/>
+               <tool-detail v-bind:rowTool='rowFromTools'></tool-detail>
+            </v-tab>
+            <v-tab title="Components">
+               <br/>
+               <component-detail v-bind:tool='rowFromTools' v-bind:components='components'></component-detail>
+            </v-tab>
+         </vue-tabs>
+      </div>
+   </div>
 </template>
+
+
 <script>
 import ToolTable from "./ToolTable";
 import AddItem from './AddItem'
@@ -50,9 +51,16 @@ export default {
     },
     methods: {
         handleRowFunction(row) {
-            this.rowFromTools = row;
+            if(this.rowFromTools.Id==row.Id){
+                this.mainToolTableClasses='col-sm-12';
+                this.displayDetailPage=false;
+            }
+            else{
+                this.rowFromTools = row;
             this.mainToolTableClasses='col-sm-6';
             this.displayDetailPage=true;
+            }
+            
         }
     }
 };

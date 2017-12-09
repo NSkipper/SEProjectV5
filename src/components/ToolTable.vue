@@ -1,14 +1,20 @@
 <template>
    <div class='container-fluid'>
-         <div class="form-group">
-            <label for='toolTable'>Select all tools from</label>
-            <select id='toolTable' class='form-control' v-model='selectedMachine'>
-              <option value="all" checked>All</option>
-              <option value=null>Not installed</option>
-              <option v-for="machine in uniqueMachines">{{machine}}</option>
-         </select>
-         </div>
-         
+        <form class="form-inline" action="/action_page.php">
+            <div class="form-group">
+                <label for="email">Select all tools from:</label>
+                <select id='toolTable' class='form-control' v-model='selectedMachine'>
+                    <option value="all" checked>All</option>
+                    <option value=null>Not installed</option>
+                    <option v-for="machine in uniqueMachines">{{machine}}</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn ">Add Machines</button>
+                <button type="button" class="btn">Add Tools</button>
+            </div> 
+        </form> 
+   
         <div>
           <vue-bootstrap-table
               :columns="getToolKeys()"
@@ -18,6 +24,8 @@
               ::multi-column-sortable="true"
               :multi-column-sortable="true"
               :row-click-handler="handleRowFunction"
+              :page-size=15
+              :paginated="true"
               :filter-case-sensitive="false">
           </vue-bootstrap-table>
         </div>

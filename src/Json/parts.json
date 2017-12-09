@@ -83,7 +83,6 @@
       {
         "Key": "Clearance",
         "Value": "10"
-
       },
       {
         "Key": "Height",
@@ -196,7 +195,6 @@
       {
         "Key": "Height",
         "Value": "8.5"
-
       }
     ],
     "ToolId": 3

@@ -9,12 +9,6 @@
                      </div>
                   </div>
                   <div class="form-group">
-                     <label class="control-label col-sm-2" for="tID">Tool ID:</label>
-                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="tID" placeholder="Enter tool ID" name="tID">
-                     </div>
-                  </div>
-                  <div class="form-group">
                      <label class="control-label col-sm-2" for="tType">Tool Type:</label>
                      <div class="col-sm-4">
                         <input type="text" class="form-control" id="tType" placeholder="Enter tool type" name="tType">

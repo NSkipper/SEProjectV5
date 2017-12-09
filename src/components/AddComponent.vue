@@ -15,12 +15,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="pHitCount">Part hitcount:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="pHitCount" placeholder="Enter part hitcount" name="pHitCount">
-                    </div>
-                </div>
-                <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-4">
                         <button type="submit" class="btn btn-default">Submit</button>
                         <button type="reset" class="btn btn-default">Reset</button>
