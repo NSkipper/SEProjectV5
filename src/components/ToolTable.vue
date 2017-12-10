@@ -11,7 +11,7 @@
             </div>
             <div class="btn-group">
                 <router-link :to="{name:'AddMachine'}">
-                    <button type="button" class="btn ">Add Machines</button>
+                    <button type="button" class="btn" v-on:click="addMachine">Add Machines</button>
                 </router-link>
                 <router-link :to="{name:'AddTool'}" :machines='uniqueMachines'>
                     <button type="button" class="btn">Add Tools</button>
@@ -57,7 +57,11 @@ export default {
                     keyList.push(name);
                 }
             }
-            return 1;
+            return keyList;
+        },
+        addMachine(){
+            let payload=this.getKeys(this.machines)
+            this.$bus.$emit('add-machine',payload);
         },
         getToolKeys() {
             var entry;
@@ -141,10 +145,6 @@ export default {
             } else {
                 return this.tools.filter(tool => tool.MachineSerial == this.toolPassesMachineFilter());
             }
-        },
-        getMachineKeys: function(){
-            console.log( this.getKeys(this.machines));
-            return this.getKeys(this.machines);
         }
     }
 };

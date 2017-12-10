@@ -12,7 +12,7 @@
             <div class="panel-body" >
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <router-view v-bind:tools="tools" v-bind:machines="machines" v-bind:components="components"/>
+                        <router-view :tools="tools" :machines="machines" :components="components"/>
                     </div>
                 </div> 
             </div>
@@ -25,7 +25,15 @@
 export default {
     name: 'app',
 
-    props: ['tools', 'machines', 'components']
+    props: ['tools', 'machines', 'components'],
+    methods:{
+        addMachine(payload){
+            console.log('this is'+payload);
+        }
+    },
+    created(){
+        this.$bus.$on('add-machine', this.addMachine)
+    }
 }
 </script>
 

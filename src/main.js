@@ -12,7 +12,8 @@ Vue.use(VueTabs)
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'lodash/lodash.min.js'
 Vue.config.productionTip = false;
-
+const bus = new Vue();
+Object.defineProperty(Vue.prototype, '$bus',{get() {return this.$root.bus} });
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -22,7 +23,8 @@ new Vue({
   data:{
     machineJSON: [],
     toolsJSON: [],
-    componentsJSON: []
+    componentsJSON: [],
+    bus
   },
   methods: {
     fetchData: function () {
