@@ -28,7 +28,9 @@ new Vue({
     fetchData: function () {
       var jsonURL1 = "../src/Json/machine.json"; //consist of machine information, and the list of ID of tools in those machines
       var jsonURL2 = "../src/Json/tools.json";//consist of tools information and a list of part IDs
-      var jsonURL3 = "../src/Json/parts.json";//consist of part information
+      var jsonURL3 ="../src/Json/toolsStorage.json";//consist of tools that is not in use
+      var jsonURL4 = "../src/Json/parts.json";//consist of part information
+      var jsonURL5 = "../src/Json/partsStorage.json";//consist of part storage information
       var self = this;
       //json1 for machineJSON
       axios.get(jsonURL1)
@@ -46,10 +48,26 @@ new Vue({
         .catch(function (error) {
           console.log(error);
         });
-      //json3 for partJSON
-      axios.get(jsonURL3)
+       //json3 for toolStorage concatting the storage and tool into one big json
+       axios.get(jsonURL3)
+       .then(function (response) {
+         self.toolsJSON = self.toolsJSON.concat(response.data);
+       })
+       .catch(function (error) {
+         console.log(error);
+       });  
+      //json4 for partJSON
+      axios.get(jsonURL4)
         .then(function (response) {
           self.componentsJSON = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        //json5 for part storage
+        axios.get(jsonURL5)
+        .then(function (response) {
+          self.componentsJSON = self.componentsJSON.concat(response.data);
         })
         .catch(function (error) {
           console.log(error);

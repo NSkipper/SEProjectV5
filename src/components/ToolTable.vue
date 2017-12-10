@@ -10,10 +10,10 @@
                 </select>
             </div>
             <div class="btn-group">
-                <router-link v-bind:to="{name:'AddMachine'}">
+                <router-link :to="{name:'AddMachine'}">
                     <button type="button" class="btn ">Add Machines</button>
                 </router-link>
-                <router-link v-bind:to="{name:'AddTool'}" v-bind:machines='uniqueMachines'>
+                <router-link :to="{name:'AddTool'}" :machines='uniqueMachines'>
                     <button type="button" class="btn">Add Tools</button>
                 </router-link>
             </div> 
@@ -33,7 +33,6 @@
               :filter-case-sensitive="false">
           </vue-bootstrap-table>
         </div>
-
    </div>
 </template>
 
@@ -50,6 +49,16 @@ export default {
         VueBootstrapTable: VueBootstrapTable
     },
     methods: {
+        getKeys(arrayValue){
+            var entry=arrayValue[0];
+            var keyList=[];
+            for (name in entry) {
+                if (keyList.indexOf(name) == -1) {
+                    keyList.push(name);
+                }
+            }
+            return 1;
+        },
         getToolKeys() {
             var entry;
             var name;
@@ -84,17 +93,17 @@ export default {
                     editable: false
                 }
             ];
-            var keyList = ['Name', 'Type', 'StationNumber', 'MachineSerial','PartIds'];
+            var toolKeyList = ['Name', 'Type', 'StationNumber', 'MachineSerial','PartIds'];
             entry = this.tools[0];
             for (name in entry) {
-                if (keyList.indexOf(name) == -1) {
+                if (toolKeyList.indexOf(name) == -1) {
                     columns.push({
                         title: name,
                         name: name,
                         visible: false,
                         editable: false
                     });
-                    keyList.push(name);
+                    toolKeyList.push(name);
                 }
             }
             return columns;
@@ -127,12 +136,15 @@ export default {
             return result;
         },
         filterToolByMachine: function() {
-            var myArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'k'];
             if (this.selectedMachine == 'all') {
                 return this.tools;
             } else {
                 return this.tools.filter(tool => tool.MachineSerial == this.toolPassesMachineFilter());
             }
+        },
+        getMachineKeys: function(){
+            console.log( this.getKeys(this.machines));
+            return this.getKeys(this.machines);
         }
     }
 };

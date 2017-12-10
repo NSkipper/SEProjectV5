@@ -157,19 +157,6 @@
         ]
     },
     {
-        "Id": 11,
-        "Name": "R8.0",
-        "Shape": "RND",
-        "Size": "D",
-        "Diameter": 7,
-        "Xdimension": 0,
-        "Ydimension": 0,
-        "StationNumber": 0,
-        "MachineSerial": null,
-        "Type": "WheelTool",
-        "PartIds": []
-    },
-    {
         "Id": 12,
         "Name": "0018_SENK_UNTEN",
         "Shape": "SPEC",

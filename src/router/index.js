@@ -16,7 +16,8 @@ export default new Router({
     {
       path: '/AddMachine',
       name: 'AddMachine',
-      component: AddMachine
+      component: AddMachine,
+      
     },
     {
       path: '/AddTool',
