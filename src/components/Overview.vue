@@ -7,9 +7,6 @@
                   <br/>
                   <tool-table v-bind:machines='machines' v-bind:tools='tools' v-on:handle-row='handleRowFunction'></tool-table>
                </v-tab>
-               <v-tab  title="Add Items">
-                  <add-item></add-item>
-               </v-tab>
             </vue-tabs>
          </div>
       </div>
@@ -31,14 +28,12 @@
 
 <script>
 import ToolTable from "./ToolTable";
-import AddItem from './AddItem'
 import ToolDetail from './ToolDetail'
 import ComponentDetail from './detailedComponent'
 export default {
     props: ["tools", "machines", "components"],
     components: {
         ToolTable,
-        AddItem,
         ToolDetail,
         ComponentDetail
     },
@@ -52,6 +47,7 @@ export default {
     methods: {
         handleRowFunction(row) {
             if(this.rowFromTools.Id==row.Id){
+                this.rowFromTools=[];
                 this.mainToolTableClasses='col-sm-12';
                 this.displayDetailPage=false;
             }

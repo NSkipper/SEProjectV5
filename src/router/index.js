@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Overview from '@/components/Overview'
-import AddItem from '@/components/AddItem'
 import AddMachine from '@/components/AddMachine'
 import AddTool from '@/components/AddTool'
 import AddComponent from '@/components/AddComponent'
@@ -13,6 +12,22 @@ export default new Router({
       path: '/',
       name: 'Overview',
       component: Overview
-    }
+    },
+    {
+      path: '/AddMachine',
+      name: 'AddMachine',
+      component: AddMachine
+    },
+    {
+      path: '/AddTool',
+      name: 'AddTool',
+      component: AddTool
+    },
+    {
+      path: '/AddComponent',
+      name: 'AddComponent',
+      component: AddComponent
+    },
+    { path: '*', redirect: {name:'Overview'} }
   ]
 })

@@ -2,7 +2,7 @@
    <div class='container-fluid'>
         <form class="form-inline" action="/action_page.php">
             <div class="form-group">
-                <label for="email">Select all tools from:</label>
+                <label for="toolTable">Select all tools from:</label>
                 <select id='toolTable' class='form-control' v-model='selectedMachine'>
                     <option value="all" checked>All</option>
                     <option value=null>Not installed</option>
@@ -10,8 +10,12 @@
                 </select>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn ">Add Machines</button>
-                <button type="button" class="btn">Add Tools</button>
+                <router-link v-bind:to="{name:'AddMachine'}">
+                    <button type="button" class="btn ">Add Machines</button>
+                </router-link>
+                <router-link v-bind:to="{name:'AddTool'}" v-bind:machines='uniqueMachines'>
+                    <button type="button" class="btn">Add Tools</button>
+                </router-link>
             </div> 
         </form> 
    

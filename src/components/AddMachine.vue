@@ -23,6 +23,9 @@
                   </div>
                </form>
             </div>
+            <router-link v-bind:to="{name:'Overview'}">
+                <button type="button" class="btn btn-default">Back to main</button>
+            </router-link>
          </div>
       </div>
    </div>

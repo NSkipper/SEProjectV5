@@ -19,9 +19,9 @@
                 </tbody>     
             </table> 
         </div>
-        <div class="btn-group">
-            <button type="button" class="btn ">Add Components</button>
-        </div> 
+        <router-link v-bind:to="{name:'AddComponent'}">
+            <button type="button" class="btn">Add Components</button>
+        </router-link>
     </div>    
 </template>
 

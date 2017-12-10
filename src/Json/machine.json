@@ -19,7 +19,7 @@
     {
         "Serial": "L100",
         "Name": "Laserdyne 606D",
-      "ToolIds": [
+        "ToolIds": [
         10,
         12
       ]
