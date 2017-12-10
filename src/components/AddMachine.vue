@@ -2,26 +2,18 @@
    <div class="container-fluid">
          <div class='col-sm-12'>
             <div id="addmachine" class="tabAddItem">
-               <form action="#" class="form-horizontal">
-                  <div class="form-group">
-                     <label class="control-label col-sm-2" for="mName">Machine name:</label>
-                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="mName" placeholder="Enter machine name" name="mName">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <label class="control-label col-sm-2" for="mName">Machine serial:</label>
-                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="mSerial" placeholder="Enter machine Serial" name="mSerial">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <div class="col-sm-offset-2 col-sm-4">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
-                     </div>
-                  </div>
-               </form>
+                <form>
+                    <div class="form-group">
+                        <label for="mName">Machine name:</label>
+                        <input type="text" class="form-control" id="mName" placeholder="Enter machine name">
+                    </div>
+                    <div class="form-group">
+                        <label for="mSerial">Machine serial:</label>
+                        <input type="text" class="form-control" id="mSerial" placeholder="Enter machine serial">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </form> 
             </div>
             <router-link v-bind:to="{name:'Overview'}">
                 <button type="button" class="btn btn-default">Back to main</button>
