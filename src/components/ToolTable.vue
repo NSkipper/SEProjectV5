@@ -11,9 +11,9 @@
             </div>
             <div class="btn-group">
                 <router-link :to="{name:'AddMachine'}">
-                    <button type="button" class="btn" v-on:click="addMachine">Add Machines</button>
+                    <button type="button" class="btn">Add Machines</button>
                 </router-link>
-                <router-link :to="{name:'AddTool'}" :machines='uniqueMachines'>
+                <router-link :to="{name:'AddTool'}">
                     <button type="button" class="btn">Add Tools</button>
                 </router-link>
             </div> 
@@ -59,10 +59,6 @@ export default {
             }
             return keyList;
         },
-        addMachine(){
-            let payload=this.getKeys(this.machines)
-            this.$bus.$emit('add-machine',payload);
-        },
         getToolKeys() {
             var entry;
             var name;
@@ -89,15 +85,9 @@ export default {
                     name: "MachineSerial",
                     visible: true,
                     editable: false
-                },
-                {
-                    title: "Attached Components",
-                    name: "PartIds",
-                    visible: true,
-                    editable: false
                 }
             ];
-            var toolKeyList = ['Name', 'Type', 'StationNumber', 'MachineSerial','PartIds'];
+            var toolKeyList = ['Name', 'Type', 'StationNumber', 'MachineSerial'];
             entry = this.tools[0];
             for (name in entry) {
                 if (toolKeyList.indexOf(name) == -1) {

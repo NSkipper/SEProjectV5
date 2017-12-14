@@ -53,8 +53,8 @@ export default {
             }
             else{
                 this.rowFromTools = row;
-            this.mainToolTableClasses='col-sm-6';
-            this.displayDetailPage=true;
+                this.mainToolTableClasses='col-sm-6';
+                this.displayDetailPage=true;
             }
             
         }

@@ -8,6 +8,11 @@
                 :show-column-picker="true">
             </vue-bootstrap-table>
         </div>
+
+        <router-link v-bind:to="{name:'AddComponent'}">
+            <button type="button" class="btn" v-on:click="getClickedToolId">Add Components</button>
+        </router-link>
+
         <div class='row container-fluid' v-if='rowClicked'>
             <h4>{{rowComponentInfo.Identifier}} detailed information:</h4>
             <table class="table table-striped table-condensed table-responsive table-bordered">
@@ -18,10 +23,7 @@
                     </tr>
                 </tbody>     
             </table> 
-        </div>
-        <router-link v-bind:to="{name:'AddComponent'}">
-            <button type="button" class="btn">Add Components</button>
-        </router-link>
+        </div>    
     </div>    
 </template>
 
@@ -125,6 +127,10 @@ export default {
             this.rowComponentInfo=entry;
             this.rowClicked=true;
         },
+        getClickedToolId(){
+            console.log(this.tool.Id)
+            this.$bus.$emit('get-tool-id',this.tool.Id);
+        }
     },
     computed:{
         getPartsFromSelectedTool: function(){

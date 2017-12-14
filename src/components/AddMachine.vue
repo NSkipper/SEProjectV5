@@ -5,14 +5,17 @@
                 <form>
                     <div class="form-group">
                         <label for="mName">Machine name:</label>
-                        <input type="text" class="form-control" id="mName" placeholder="Enter machine name">
+                        <input type="text" class="form-control" id="mName" placeholder="Enter machine name" v-model="machineName">
                     </div>
                     <div class="form-group">
                         <label for="mSerial">Machine serial:</label>
-                        <input type="text" class="form-control" id="mSerial" placeholder="Enter machine serial">
+                        <input type="text" class="form-control" id="mSerial" placeholder="Enter machine serial" v-model="machineSerial">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
+                    <div v-if="counter>0">
+                        <p>{{counter}} machines added</p>
+                    </div>
+                    <button type="submit" class="btn btn-default" v-on:click="addItem">Submit</button>
+                    <button type="reset" class="btn btn-default" v-on:click="resetFields">Reset</button>
                 </form> 
             </div>
             <router-link v-bind:to="{name:'Overview'}">
@@ -27,10 +30,30 @@
 
 <script>
     export default {
+        props: [],
         data(){
             return{
-                machineKey:[]
+                machineName:'',
+                machineSerial:'',
+                counter:0,
             }
         },
+        methods:{
+            addItem(){
+                let type='machine';
+                let payload=[];
+                payload.push({
+                    Serial: this.machineSerial,
+                    Name: this.machineName
+                })
+                this.$bus.$emit('add-item',type,payload);
+                this.resetFields();
+                this.counter+=1;
+            },
+            resetFields(){
+                this.machineName='';
+                this.machineSerial='';
+            }
+        }
     }
 </script>
