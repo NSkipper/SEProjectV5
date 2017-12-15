@@ -91,7 +91,7 @@ new Vue({
         jsonPostURL=this.jsonURL4
       }
       if(jsonPostURL!=''){
-        axios.post(jsonPostURL, payload)
+        axios.post(jsonPostURL, payload[0])
         .then(function (response) {
           console.log(response);
         })
