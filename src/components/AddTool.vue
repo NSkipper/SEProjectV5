@@ -3,10 +3,6 @@
       <div class='col-sm-12'>
          <form>
             <div class="form-group">
-               <label for="tId">Tool Id:</label>
-               <input type="text" class="form-control" id="tId" v-model="toolId">
-            </div>
-            <div class="form-group">
                <label for="tName">Tool Name:</label>
                <input type="text" class="form-control" id="tName" v-model="toolName">
             </div>
@@ -56,7 +52,6 @@
          </router-link>
       </div>
    </div>
-   </div>
 </template>
 
 <script>
@@ -64,7 +59,6 @@
         props: ["machines"],
         data(){
             return{
-                toolId:'',
                 toolName:'',
                 toolShape:'',
                 toolSize:'',
@@ -82,23 +76,23 @@
                 let type='tool';
                 let payload=[];
                 payload.push({
-                    Id: this.toolId,
-                    Name: this.toolName,
-                    Shape: this.toolShape,
-                    Size: this.toolSize,
-                    Diameter: this.toolDiameter,
-                    Xdimension: this.toolXdimension,
-                    Ydimension: this.toolYdimension,
-                    StationNumber: this.toolStationNumber,
-                    MachineSerial: this.machineSerial,
-                    Type: this.toolType,
+                    Serial: this.machineSerial,
+                    Tools:[{
+                        Name: this.toolName,
+                        Shape: this.toolShape,
+                        Size: this.toolSize,
+                        Diameter: this.toolDiameter,
+                        Xdimension: this.toolXdimension,
+                        Ydimension: this.toolYdimension,
+                        StationNumber: this.toolStationNumber,
+                        Type: this.toolType,
+                    }] 
                 })
                 this.$bus.$emit('add-item',type,payload);
                 this.resetFields();
                 this.counter+=1
             },
             resetFields(){
-                this.toolId='';
                 this.toolName='';
                 this.toolShape='';
                 this.toolSize='';

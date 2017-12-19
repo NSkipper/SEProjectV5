@@ -128,7 +128,6 @@ export default {
             this.rowClicked=true;
         },
         getClickedToolId(){
-            console.log(this.tool.Id)
             this.$bus.$emit('get-tool-id',this.tool.Id);
         }
     },

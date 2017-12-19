@@ -46,7 +46,6 @@
 </template>
 
 <script>
-    import Autocomplete from 'vue2-autocomplete-js'
     export default {
         props:["toolId"],
         data(){

@@ -22,8 +22,7 @@
                 <button type="button" class="btn btn-default">Back to main</button>
             </router-link>
          </div>
-      </div>
-   </div>
+    </div>
 </template>
 
 

@@ -24,15 +24,14 @@ new Vue({
     toolsJSON: [],
     componentsJSON: [],
     bus,
-    jsonURL1 : "../src/Json/machine.json", //consist of machine information, and the list of ID of tools in those machines
-    jsonURL2 : "../src/Json/tools.json",//consist of tools information and a list of part IDs
-    jsonURL3 :"../src/Json/toolsStorage.json",//consist of tools that is not in use
-    jsonURL4 : "../src/Json/parts.json",//consist of part information
-    jsonURL5 : "../src/Json/partsStorage.json",//consist of part storage information
+    jsonURL1 : "http://192.168.64.35:8080/api/Machine", //"../src/Json/machine.json", //consist of machine information, and the list of ID of tools in those machines
+    jsonURL2 : "http://192.168.64.35:8080/api/Tool",//"../src/Json/tools.json",//consist of tools information and a list of part IDs
+    jsonURL3 : "http://192.168.64.35:8080/api/tool/Storage",//"../src/Json/toolsStorage.json",//consist of tools that is not in use
+    jsonURL4 : "http://192.168.64.35:8080/api/Part",//"../src/Json/parts.json",//consist of part information
+    jsonURL5 : "http://192.168.64.35:8080/api/part/storage",//"../src/Json/partsStorage.json",//consist of part storage information
   },
   methods: {
     fetchData: function () {
-
       var self = this;
       //json1 for machineJSON
       axios.get(this.jsonURL1)
@@ -75,34 +74,51 @@ new Vue({
           console.log(error);
         });
     },
-    postItems(type, payload){
-      let jsonPostURL='';
+    sendItem(type, payload){
+      let itemURL='';
       if(type=="machine"){
-        jsonPostURL=this.jsonURL1
+        itemURL=this.jsonURL1
       }
       if(type=="tool"){
-        if(payload[0].MachineSerial!="null"){
-          jsonPostURL=this.jsonURL2
+        if(payload[0].Serial!="null"){
+          itemURL=this.jsonURL1
         }else{
-          jsonPostURL=this.jsonURL3
+          itemURL=this.jsonURL2
         }
       }
       if(type=="component"){
-        jsonPostURL=this.jsonURL4
+        itemURL=this.jsonURL4
       }
-      if(jsonPostURL!=''){
-        axios.post(jsonPostURL, payload[0])
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      if(itemURL!=''){
+        if(type=="machine"){
+          this.postItem(itemURL,payload[0])
+        }
+        else{
+          this.putItem(itemURL,payload[0])
+        }
       }
+    },
+    postItem(itemURL,payload){
+      axios.post(itemURL, payload)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    putItem(itemURL,payload){
+      axios.put(itemURL, payload)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   },
   created: function () {
     this.fetchData();
-    this.$bus.$on('add-item', this.postItems)
+    this.$bus.$on('add-item', this.sendItem)
   }
 })
